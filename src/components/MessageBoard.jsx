@@ -12,6 +12,11 @@ function MessageBoard() {
     setMessage([...message, newMessage]);
   };
 
+  const deletMessage  = (id) => {
+    const updateMessage = message.filter((message) => message.id !== id)
+    setMessage(updateMessage)
+  }
+
   return (
     <div className="app-wrapper">
       <h1 class="app-title">Message board</h1>
@@ -34,7 +39,7 @@ function MessageBoard() {
           {message.map((message) => (
             <div key={message.id} className="message">
               <div>{message.message}</div>
-              <button className="delete-button">x</button>
+              <button className="delete-button" onClick={() => deletMessage(message.id)}>x</button>
             </div>
           ))}        
       </div>
