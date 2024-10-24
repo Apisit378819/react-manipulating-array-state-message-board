@@ -4,16 +4,20 @@ function MessageBoard() {
   const [messageTodo, setMessageTodo] = useState([]);
   const [textTodo, setTextTodo] = useState("");
 
-  console.log(textTodo);
+  console.log(messageTodo);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let newMess = {
-      id: messageTodo.length + 1,
-      message: textTodo,
-    };
-    setMessageTodo([...messageTodo, newMess]);
-    setTextTodo("");
+    if (textTodo !== "") {
+      let newMess = {
+        id: messageTodo.length + 1,
+        message: textTodo,
+      };
+      setMessageTodo([...messageTodo, newMess]);
+      setTextTodo("");
+    } else {
+      setMessageTodo(messageTodo);
+    }
   };
 
   const deleteTodo = (index) => {
